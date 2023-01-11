@@ -18,19 +18,33 @@ function Form() {
 
   }
 
+  function closeModal(e) {
+    const modal = document.querySelector(".modal")
+    const overlay = document.querySelector(".overlay")
+
+    e.preventDefault();
+    modal.classList.add("hidden");
+    overlay.classList.add("hidden");
+  }
+
   return(
-    <form className="modal hidden">
-      {choices.map((item, index) => {
-        return (
-          <label key={index + 1} id={index + 1}>
-            {item}
-            <input type="text" className="choices"></input>
-          </label>
-        );
-      })}
-      <button className="addChoice" onClick={addNewChoice}>+</button>
-      <button type="submit" onClick={submitChoices}>Submit</button>
-    </form>
+    <div>
+      <form className="modal">
+        <button className="btn-close" onClick={closeModal}>X</button>
+        <p>Add your choices below!</p>
+        {choices.map((item, index) => {
+          return (
+            <label key={index + 1} id={index + 1}>
+              {`${item}: `}
+              <input type="text" className="choices"></input>
+            </label>
+          );
+        })}
+        <button className="addChoice" onClick={addNewChoice}>+</button>
+        <button type="submit" onClick={submitChoices}>Submit</button>
+      </form>
+      <div className="overlay" onClick={closeModal}></div>
+    </div>
   );
 }
 

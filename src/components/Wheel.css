@@ -1,0 +1,94 @@
+.arrow {
+  position: absolute;
+  left: 48.5%;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 20px solid;
+  color: red;
+  margin-top: 10px;
+  z-index: 2;
+}
+
+#spin {
+  position: absolute;
+  top: 67%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  background-color: lightcoral;
+  text-transform: uppercase;
+  border: 8px solid;
+  font-weight: bold;
+  font-size: 20px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  cursor: pointer;
+  outline: none;
+  letter-spacing: 1px;
+}
+
+.wheel-container {
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  border: 20px solid;
+  position: relative;
+  overflow: hidden;
+  transition: 5s;
+  margin: 10px;
+}
+
+.wheel-container div {
+  height: 50%;
+  width: 210px;
+  position: absolute;
+  clip-path: polygon(100% 0, 50% 100%, 0 0);
+  transform: translateX(-50%);
+  transform-origin: bottom;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: 145px;
+}
+
+.wheel-container .choice1 {
+  left: 50%;
+  background-color: lightblue;
+}
+
+.wheel-container .choice2 {
+  transform: rotate(45deg);
+  background-color: lightgoldenrodyellow;
+}
+
+.wheel-container .choice3 {
+  transform: rotate(90deg);
+  background-color: lightgreen;
+}
+
+.wheel-container .choice4 {
+  transform: rotate(135deg);
+  background-color: lightpink;
+}
+
+.wheel-container .choice5 {
+  transform: rotate(180deg);
+  background-color: lightsalmon;
+}
+
+.wheel-container .choice6 {
+  transform: rotate(225deg);
+  background-color: lightseagreen;
+}
+
+.wheel-container .choice7 {
+  transform: rotate(270deg);
+  background-color: lavender;
+}
+
+.wheel-container .choice8 {
+  transform: rotate(315deg);
+  background-color: beige;
+}

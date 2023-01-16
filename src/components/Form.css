@@ -13,6 +13,7 @@
   border-radius: 5px;
   padding: 10px;
   z-index: 2;
+  background-color: lightcyan;
 }
 
 .modal input {
@@ -30,6 +31,8 @@
   height: 100%;
   backdrop-filter: blur(3px);
   z-index: 1;
+  background-color: lightgray;
+  opacity: 75%;
 }
 
 .hidden {

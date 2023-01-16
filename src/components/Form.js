@@ -1,28 +1,40 @@
 import React, {useState} from "react";
 import "./Form.css";
 
-function Form() {
-  const [choices, setChoices] = useState(["Choice 1", "Choice 2"])
+function Form(props) {
+  const choices = props.choices
+  const setChoices = props.setChoices
 
   function addNewChoice(e) {
     e.preventDefault()
     const index = choices.length + 1;
-    setChoices([
+    choices.length < 8 
+    ? setChoices([
       ...choices,
       `Choice: ${index}`
     ])
+    : alert("Max amount reached")
   }
 
   function submitChoices(e) {
+    const choiceInput = document.getElementsByClassName("choiceInput")
+    let choicesArr = [];
     e.preventDefault();
 
+
+    for(let i = 0; i < choiceInput.length; i++) {
+      choicesArr.push(choiceInput[i].value)
+    }
+
+    setChoices(choicesArr);
+    closeModal();
   }
 
-  function closeModal(e) {
+
+  function closeModal() {
     const modal = document.querySelector(".modal")
     const overlay = document.querySelector(".overlay")
 
-    e.preventDefault();
     modal.classList.add("hidden");
     overlay.classList.add("hidden");
   }
@@ -30,13 +42,13 @@ function Form() {
   return(
     <div>
       <form className="modal">
-        <button className="btn-close" onClick={closeModal}>X</button>
+        <button type="button" className="btn-close" onClick={closeModal}>X</button>
         <p>Add your choices below!</p>
         {choices.map((item, index) => {
           return (
-            <label key={index + 1} id={index + 1}>
+            <label key={index + 1} className="choiceLabels">
               {`${item}: `}
-              <input type="text" className="choices"></input>
+              <input type="text" className="choiceInput"></input>
             </label>
           );
         })}

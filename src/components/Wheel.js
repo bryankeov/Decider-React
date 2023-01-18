@@ -5,9 +5,11 @@ function Wheel(props) {
 
   const wheelContainer = document.querySelector(".wheel-container");
   const spinBtn = document.getElementById('spin');
-  let num = Math.ceil(Math.random() * 10000);
 
+  //Random spin of choices wheel. 
+  //Increased multiplied rate to produce better spin effect
   function spinWheel() {
+    let num = Math.ceil(Math.random() * 10000);
     wheelContainer.style.transform = "Rotate(" + num + "deg)";
     num += Math.ceil(Math.random() * 10000);
   }

@@ -1,6 +1,7 @@
 import "./Header.css"
 
 function Header() {
+  //Opens pop up to add more choices
   function openModal() {
     const modal = document.querySelector(".modal")
     const overlay = document.querySelector(".overlay")

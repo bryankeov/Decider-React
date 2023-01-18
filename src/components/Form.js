@@ -5,6 +5,7 @@ function Form(props) {
   const choices = props.choices
   const setChoices = props.setChoices
 
+  //Allow up to 8 choices
   function addNewChoice(e) {
     e.preventDefault()
     const index = choices.length + 1;
@@ -16,6 +17,7 @@ function Form(props) {
     : alert("Max amount reached")
   }
 
+  //On submit, each added choice input is added to the wheel
   function submitChoices(e) {
     const choiceInput = document.getElementsByClassName("choiceInput")
     let choicesArr = [];
@@ -33,7 +35,7 @@ function Form(props) {
     closeModal();
   }
 
-
+  //Close pop up window for choice selection
   function closeModal() {
     const modal = document.querySelector(".modal")
     const overlay = document.querySelector(".overlay")

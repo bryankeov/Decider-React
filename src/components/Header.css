@@ -1,0 +1,13 @@
+.header {
+  background-color: #EEA47FFF;
+  width: 96.8%;
+  padding: 20px;
+}
+
+h1 {
+  font-weight: 900;
+}
+
+button {
+  padding: 5px;  
+}

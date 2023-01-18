@@ -21,9 +21,12 @@ function Form(props) {
     let choicesArr = [];
     e.preventDefault();
 
-
     for(let i = 0; i < choiceInput.length; i++) {
-      choicesArr.push(choiceInput[i].value)
+      if(choiceInput[i].value) {
+        choicesArr.push(choiceInput[i].value)
+      } else {
+        choicesArr.push(`Choice ${i + 1}`)
+      }
     }
 
     setChoices(choicesArr);
@@ -47,7 +50,7 @@ function Form(props) {
         {choices.map((item, index) => {
           return (
             <label key={index + 1} className="choiceLabels">
-              {`${item}: `}
+              {`Choice ${index + 1}: `}
               <input type="text" className="choiceInput"></input>
             </label>
           );

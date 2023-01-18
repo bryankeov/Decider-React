@@ -5,7 +5,7 @@ import Form from "./components/Form"
 import Wheel from "./components/Wheel"
 
 function App() {
-  const [choices, setChoices] = useState(["Choice: 1", "Choice: 2"])
+  const [choices, setChoices] = useState(["Choice 1", "Choice 2"])
 
   return (
     <div className="App">

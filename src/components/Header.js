@@ -1,3 +1,5 @@
+import "./Header.css"
+
 function Header() {
   function openModal() {
     const modal = document.querySelector(".modal")

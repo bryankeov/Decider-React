@@ -1,15 +1,15 @@
+import Wedge from "./Wedge";
 import "./Wheel.css";
 
 function Wheel(props) {
   const choices = props.choices;
-
-  const wheelContainer = document.querySelector(".wheel-container");
+  const wedgeContainer = document.querySelector(".wedge-container");
 
   //Random spin of choices wheel.
-  //Increased multiplied rate to produce better spin effect
+  //Increased multiplied rate to produce better spin visuals
   function spinWheel() {
     let num = Math.ceil(Math.random() * 10000);
-    wheelContainer.style.transform = "Rotate(" + num + "deg)";
+    wedgeContainer.style.transform = "Rotate(" + num + "deg)";
     num += Math.ceil(Math.random() * 10000);
   }
 
@@ -19,15 +19,7 @@ function Wheel(props) {
         Spin
       </button>
       <div className="arrow"></div>
-      <div className="wheel-container">
-        {choices.map((item, index) => {
-          return (
-            <div key={index + 1} className={`choice${index + 1}`}>
-              {item}
-            </div>
-          );
-        })}
-      </div>
+      <Wedge choices={choices} />
     </div>
   );
 }

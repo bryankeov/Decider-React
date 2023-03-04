@@ -1,0 +1,32 @@
+.wedge-container {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background-color: red;
+  overflow: hidden;
+  margin: 30px;
+  transition: 5s;
+  border: 10px solid black;
+}
+
+.wedge {
+  outline: none;
+  background-color: blue;
+  position: absolute;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  left: 50%;
+  bottom: 50%;
+  padding: 0;
+  transform-origin: bottom left;
+  transition: all 200ms ease-out;
+}
+
+.inner {
+  position: absolute;
+  bottom: 75px;
+  left: 45px;
+  padding: 0;
+}

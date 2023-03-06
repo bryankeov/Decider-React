@@ -8,9 +8,9 @@ function Wheel(props) {
   //Random spin of choices wheel.
   //Increased multiplied rate to produce better spin visuals
   function spinWheel() {
-    let num = Math.ceil(Math.random() * 10000);
+    let num = Math.ceil(Math.random() * 5000);
     wedgeContainer.style.transform = "Rotate(" + num + "deg)";
-    num += Math.ceil(Math.random() * 10000);
+    num += Math.ceil(Math.random() * 5000);
   }
 
   return (
@@ -18,7 +18,7 @@ function Wheel(props) {
       <button id="spin" onClick={spinWheel}>
         Spin
       </button>
-      <div className="arrow"></div>
+      <div className="arrow">⬇</div>
       <Wedge choices={choices} />
     </div>
   );

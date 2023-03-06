@@ -3,16 +3,15 @@
   width: 500px;
   height: 500px;
   border-radius: 50%;
-  background-color: red;
   overflow: hidden;
   margin: 30px;
   transition: 5s;
-  border: 10px solid black;
+  border: 15px solid black;
+  background-color: white;
 }
 
 .wedge {
   outline: none;
-  background-color: blue;
   position: absolute;
   cursor: pointer;
   width: 100%;
@@ -22,6 +21,7 @@
   padding: 0;
   transform-origin: bottom left;
   transition: all 200ms ease-out;
+  border: 1px solid black;
 }
 
 .inner {

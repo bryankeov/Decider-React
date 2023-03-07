@@ -2,38 +2,31 @@ import React, { useState } from "react";
 import "./Form.css";
 
 function Form(props) {
-  const choices = props.choices;
-  const setChoices = props.setChoices;
-  const isOpen = props.isOpen;
-  const setIsOpen = props.setIsOpen;
-
-  const [numInputs, setNumInputs] = useState([1, 2]);
-  const [inputText, setInputText] = useState("");
+  const { choices, onChoiceUpdate, isOpen, setIsOpen } = props;
 
   //Allow up to 8 choices
-  function addChoice(e) {
-    const index = numInputs.length + 1;
-    e.preventDefault();
-
-    setNumInputs([...numInputs, index]);
+  function handleChange(index, value) {
+    const updatedChoices = [...choices];
+    updatedChoices[index] = value;
+    onChoiceUpdate(updatedChoices);
   }
-
-  function handleChange(e) {
-    setInputText([...inputText, e.target.value]);
-  }
-
-  function onBlurChange() {}
-
   function handleSubmit(e) {
     e.preventDefault();
-
-    setChoices(inputText);
     closeModal();
   }
 
-  //Close pop up window for choice selection
   function closeModal() {
     setIsOpen(false);
+  }
+
+  function handleAddChoice() {
+    onChoiceUpdate([...choices, ""]);
+  }
+
+  function handleDelete(index) {
+    const updatedChoices = [...choices];
+    updatedChoices.splice(index, 1);
+    onChoiceUpdate(updatedChoices);
   }
 
   return (
@@ -46,19 +39,23 @@ function Form(props) {
           X
         </button>
         <p>Add your choices below!</p>
-        {numInputs.map((item, index) => {
+        {choices.map((choice, index) => {
           return (
-            <label key={index + 1} className="choiceLabels">
+            <label key={index} className="choiceLabels">
               {`Choice ${index + 1}: `}
               <input
                 type="text"
                 className="choiceInput"
-                onChange={handleChange}
+                onChange={(e) => handleChange(index, e.target.value)}
+                value={choice}
               />
+              <button type="button" onClick={() => handleDelete(index)}>
+                -
+              </button>
             </label>
           );
         })}
-        <button className="addChoice" onClick={addChoice}>
+        <button type="button" className="addChoice" onClick={handleAddChoice}>
           +
         </button>
         <button type="submit">Submit</button>

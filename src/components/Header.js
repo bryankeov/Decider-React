@@ -4,7 +4,6 @@ function Header(props) {
   //Opens pop up to add more choices
   function openModal() {
     props.setIsOpen(true);
-    props.setChoices([]);
   }
 
   return (

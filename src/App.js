@@ -13,13 +13,17 @@ function App() {
     "KBBQ",
   ]);
 
+  const handleUpdateChoices = (choices) => {
+    setChoices(choices);
+  };
+
   return (
     <div className="App">
       <Header setIsOpen={setIsOpen} setChoices={setChoices} />
       <Wheel choices={choices} />
       <Form
         choices={choices}
-        setChoices={setChoices}
+        onChoiceUpdate={handleUpdateChoices}
         isOpen={isOpen}
         setIsOpen={setIsOpen}
       />

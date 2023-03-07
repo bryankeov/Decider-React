@@ -8,14 +8,16 @@ function Wedge(props) {
   return (
     <div className="wedge-container">
       {choices.map((choice, i) => {
+        let transform = `rotate(${i * wedgeSize}deg) skewY(${
+          wedgeSize - 90
+        }deg)`;
+
         return (
           <div
             key={i}
             className="wedge"
             style={{
-              transform: `rotate(${i * wedgeSize}deg) skewY(${
-                wedgeSize - 90
-              }deg)`,
+              transform,
               backgroundColor:
                 "#" +
                 (0x1000000 + Math.random() * 0xffffff)

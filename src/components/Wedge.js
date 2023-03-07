@@ -4,7 +4,6 @@ import "./Wedge.css";
 function Wedge(props) {
   const choices = props.choices;
   let wedgeSize = 360 / choices.length;
-  console.log(wedgeSize, choices.length);
 
   return (
     <div className="wedge-container">

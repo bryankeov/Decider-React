@@ -49,5 +49,6 @@ button {
   padding: 0.5rem 0.7rem;
   border: none;
   margin-left: auto;
-  background-color: white;
+  background-color: transparent;
+  color: black;
 }

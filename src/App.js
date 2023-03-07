@@ -1,21 +1,27 @@
-import React, {useState} from "react";
-import './App.css';
-import Header from "./components/Header"
-import Form from "./components/Form"
-import Wheel from "./components/Wheel"
+import React, { useState } from "react";
+import "./App.css";
+import Header from "./components/Header";
+import Form from "./components/Form";
+import Wheel from "./components/Wheel";
 
 function App() {
-  const [choices, setChoices] = useState(["Choice 1", "Choice 2"])
+  const [isOpen, setIsOpen] = useState(false);
+  const [choices, setChoices] = useState([
+    "Pizza",
+    "Burgers",
+    "Fried Chicken",
+    "KBBQ",
+  ]);
 
   return (
     <div className="App">
-      <Header/>
-      <Wheel
-      choices={choices}
-      />
+      <Header setIsOpen={setIsOpen} setChoices={setChoices} />
+      <Wheel choices={choices} />
       <Form
-      choices={choices}
-      setChoices={setChoices}
+        choices={choices}
+        setChoices={setChoices}
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
       />
     </div>
   );

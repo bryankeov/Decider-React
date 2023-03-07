@@ -1,69 +1,72 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Form.css";
 
 function Form(props) {
   const choices = props.choices;
   const setChoices = props.setChoices;
+  const isOpen = props.isOpen;
+  const setIsOpen = props.setIsOpen;
+
+  const [numInputs, setNumInputs] = useState([1, 2]);
+  const [inputText, setInputText] = useState("");
 
   //Allow up to 8 choices
-  function addNewChoice(e) {
+  function addChoice(e) {
+    const index = numInputs.length + 1;
     e.preventDefault();
-    const index = choices.length + 1;
-    choices.length < 8
-      ? setChoices([...choices, `Choice: ${index}`])
-      : alert("Max amount reached");
+
+    setNumInputs([...numInputs, index]);
   }
 
-  //On submit, each added choice input is added to the wheel
-  function submitChoices(e) {
-    const choiceInput = document.getElementsByClassName("choiceInput");
-    let choicesArr = [];
+  function handleChange(e) {
+    setInputText([...inputText, e.target.value]);
+  }
+
+  function onBlurChange() {}
+
+  function handleSubmit(e) {
     e.preventDefault();
 
-    for (let i = 0; i < choiceInput.length; i++) {
-      if (choiceInput[i].value) {
-        choicesArr.push(choiceInput[i].value);
-      } else {
-        choicesArr.push(`Choice ${i + 1}`);
-      }
-    }
-
-    setChoices(choicesArr);
+    setChoices(inputText);
     closeModal();
   }
 
   //Close pop up window for choice selection
   function closeModal() {
-    const modal = document.querySelector(".modal");
-    const overlay = document.querySelector(".overlay");
-
-    modal.classList.add("hidden");
-    overlay.classList.add("hidden");
+    setIsOpen(false);
   }
 
   return (
     <div>
-      <form className="modal">
+      <form
+        className={`modal ${isOpen ? "" : "hidden"}`}
+        onSubmit={handleSubmit}
+      >
         <button type="button" className="btn-close" onClick={closeModal}>
           X
         </button>
         <p>Add your choices below!</p>
-        {choices.map((item, index) => {
+        {numInputs.map((item, index) => {
           return (
             <label key={index + 1} className="choiceLabels">
               {`Choice ${index + 1}: `}
-              <input type="text" className="choiceInput"></input>
+              <input
+                type="text"
+                className="choiceInput"
+                onChange={handleChange}
+              />
             </label>
           );
         })}
-        <button className="addChoice" onClick={addNewChoice}>
+        <button className="addChoice" onClick={addChoice}>
           +
         </button>
-        <button type="submit" onClick={submitChoices}>
-          Submit
-        </button>
+        <button type="submit">Submit</button>
       </form>
-      <div className="overlay" onClick={closeModal}></div>
+      <div
+        className={`overlay ${isOpen ? "" : "hidden"}`}
+        onClick={closeModal}
+      ></div>
     </div>
   );
 }

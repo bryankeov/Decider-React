@@ -6,12 +6,7 @@ import Wheel from "./components/Wheel";
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
-  const [choices, setChoices] = useState([
-    "Pizza",
-    "Burgers",
-    "Fried Chicken",
-    "KBBQ",
-  ]);
+  const [choices, setChoices] = useState(["Pizza", "Burgers", "Pasta", "KBBQ"]);
 
   const handleUpdateChoices = (choices) => {
     setChoices(choices);

@@ -12,6 +12,20 @@ function Wedge(props) {
           wedgeSize - 90
         }deg)`;
 
+        let textTransform = `skewY(${-(wedgeSize - 90)}deg) rotate(${
+          wedgeSize / 2
+        }deg) translateY(-50%) translateX(-10%)`;
+
+        if (choices.length === 2) {
+          transform = `rotate(${i * wedgeSize}deg) translateY(50%)`;
+          textTransform = `TranslateY(-875%) TranslateX(300%) Rotate(90deg)`;
+        } else if (choices.length === 1) {
+          transform = `rotate(${
+            i * wedgeSize
+          }deg) translateY(50%) translateX(-50%)`;
+          textTransform = `TranslateY(-1800%) TranslateX(425%)`;
+        }
+
         return (
           <div
             key={i}
@@ -26,11 +40,9 @@ function Wedge(props) {
             }}
           >
             <span
-              className="inner"
+              className="wedgeText"
               style={{
-                transform: `skewY(${-(wedgeSize - 90)}deg) rotate(${
-                  wedgeSize / 2
-                }deg)`,
+                transform: textTransform,
               }}
             >
               {choice}
